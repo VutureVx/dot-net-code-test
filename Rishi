@@ -1,0 +1,164 @@
+Task 1: 
+
+  import java.util.Scanner;
+ 
+public class OccurenceOfCharacters {
+     private static Scanner scan = null;  //this is for the input
+   public static void main(String []args) {
+       scan = new Scanner(System.in); 
+        String str = null;
+        System.out.println("Enter the word you wish to search : ");
+        str = scan.nextLine(); //enter on next line
+        
+        String letr = null;
+        System.out.println("Enter the letter you wish to search from: ");
+        letr = scan.nextLine();
+
+      int count = 0;//initialise the count
+      for (int i = 0; i < str.length(); i++) { //loop for each character in the word 0 being c for cheese
+         //starts from 0 and will run to 5 
+            if (str.charAt(i) == letr.charAt(0)) //checks how many times the letter is in the word
+                    count++;         
+      }
+      System.out.println("Letters: "+count);
+   }
+}
+
+Task 2:
+
+  import java.util.Scanner;
+ 
+public class OccurenceOfCharacters {
+     private static Scanner scan = null;  //this is for the input
+   public static void main(String []args) {
+       scan = new Scanner(System.in); 
+        String str = null;
+        System.out.println("Enter the word you wish to search : ");
+        str = scan.nextLine(); //enter on next line
+        
+        String letr = null;
+        System.out.println("Enter the letter you wish to search from: ");
+        letr = scan.nextLine();
+
+      int count = 0;//initialise the count
+      for (int i = 0; i < str.length(); i++) { //loop for each character in the word 0 being c for cheese
+         //starts from 0 and will run to 5 
+            if (str.charAt(i) == letr.charAt(0)) //checks how many times the letter is in the word
+                    count++;         
+      }
+      System.out.println("Letters: "+count);
+   }
+}
+
+
+
+Task 3A:
+
+
+import java.util.*;
+public class WordCounter {
+	 private static Scanner scan = null;
+    public static void main(String[] args) {
+		
+		scan = new Scanner(System.in);
+        String s = null;
+        System.out.println("Enter the sentence you would like to search: ");
+        s = scan.nextLine();
+		
+        int length = s.length();
+		
+     
+        String w = null;
+        System.out.println("Enter the word you wish to search : ");
+        w = scan.nextLine();
+       
+		
+        String a[] = s.split(" ");
+		String b[] = w.split(",");
+		
+        Map<String, Integer> words = new HashMap<>();
+       
+        for (String str : a) {
+            int count=0;
+            
+            for (int j=0; j<b.length; j++) {
+		       if(b[j].equals(str)){
+            if (words.containsKey(b[j])) {
+                count = words.get(b[j]);
+                words.put(b[j], 1 + count);
+                
+                
+            } else {
+                words.put(b[j], 1);
+                 
+            }
+            
+		      }
+            }
+        }
+        System.out.println(words); 
+    }
+}
+
+
+Task 3B:
+
+import java.util.*;
+public class PartB {
+     private static Scanner scan = null;
+    public static void main(String[] args) {
+        scan = new Scanner(System.in);
+        String str = null;
+        System.out.println("Enter the Sentence you wish to search from : ");
+        str = scan.nextLine();
+        //String str = "I have a cat named Meow and a dog name Woof . I love the dog a lot. He is larger than a small horse ";  
+        
+        String w = null;
+        System.out.println("Enter the word you wish to search : ");
+        w = scan.nextLine();
+        
+        String[] words = str.split(" "); 
+        String censored[] = w.split(",");
+        
+        
+        for (int i = 0; i < words.length; i++) {
+            for (int j=0; j<censored.length; j++) {
+                if (words[i].equals(censored[j])) {
+                    words[i] = words[i].replaceAll("(?i)\\B\\w\\B", "*");         
+                }
+            }
+            }    
+        System.out.println(String.join(" ", words));
+       
+    }
+}
+
+
+Task 3C:
+
+
+import java.util.ArrayList; 
+import java.util.Scanner;  
+
+public class PartC  {  
+    public static void main(String[] args) {  
+    Scanner scan= new Scanner(System.in);  
+    System.out.println("Enter your input : ");  
+    String s = scan.nextLine(); 
+    String words[] = s.split(" "); 
+    ArrayList<String> result = new ArrayList<String>();  
+    for (String word : words) { 
+        boolean pallindrome = isPallindrome(word); 
+        if (pallindrome) { String newWord = word; 
+            for (int i = 1; i < word.length() - 1; i++) { 
+               
+                newWord = newWord.substring(0, i) + '$' + newWord.substring(i + 1); } 
+                
+                result.add(newWord); } else { result.add(word); }  }
+                
+                System.out.println(String.join(" ", result)); } 
+                
+                static boolean isPallindrome(String str) { 
+                    int length = str.length(); 
+                    for (int i = 0; i < length / 2; i++) { 
+                        if (Character.toLowerCase(str.charAt(i)) != Character.toLowerCase(str.charAt(length - i - 1))) { return false; } } return true;  } }
